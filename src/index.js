@@ -1,5 +1,6 @@
 const express = require('express');
 require('./db/mongoosedb')
+const cors = require('cors')
 
 const userRouter = require('./routers/user')
 const taskRouter = require('./routers/task')
@@ -7,7 +8,7 @@ const taskRouter = require('./routers/task')
 const app = express();
 const port = process.env.PORT || 3000;
 
-
+app.use(cors()) //this enable cors for all routes
 app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
